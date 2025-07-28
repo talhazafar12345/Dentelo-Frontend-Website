@@ -1,0 +1,1301 @@
+APP.JSX
+
+import "./CSS/style.css"
+import User from "./User"
+import UserAdd from "./UserAdd"
+import UserEdit from "./UserEdit"
+import World from "./World"
+import Wrapper from "./Wrapper"
+
+export default function Print() {
+
+window.onscroll = function() {
+  const btn = document.getElementById("scrollBtn");
+  if (document.documentElement.scrollTop) {
+    btn.style.display = "block";
+  } else {
+    btn.style.display = "none";
+  }
+};
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+    return (
+      
+
+        <div className="pehla">
+          <header>
+
+            <div className="top-bar">
+                <div className="contact-info">
+                    <span><i className="fas fa-envelope"></i>info@example.com</span>
+                    <span><i className="fas fa-phone-alt"></i>+91-7052-101-786</span>
+                </div>
+                <div className="social-icons">
+                    <a href="#"><i className="fab fa-facebook-f"></i></a>
+                    <a href="#"><i className="fab fa-instagram"></i></a>
+                    <a href="#"><i className="fab fa-twitter"></i></a>
+                    <a href="#"><i className="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <User />
+            <UserAdd />
+            <UserEdit />
+            <World />
+            <Wrapper />
+
+            <button onClick={scrollToTop} id="scrollBtn" title="Go to top">↑</button>
+
+            </header>
+        </div>
+    )
+}
+
+USER.JSX
+
+import "./CSS/style.css"
+import image19 from "./assets/image19.png";
+import image36 from "./assets/image36.png";
+import { useState } from "react";
+
+
+import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router";
+
+export default function User() {
+
+    const [menuOpen, setMenuOpen] = useState(false);
+    const toggleMenu = () => setMenuOpen(!menuOpen);
+
+
+    return (
+
+        <div
+
+            style={{
+                backgroundImage: `url(${image19})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                height: "700px",
+            }}
+        >
+            <header>
+
+                <div className="nav">
+                    <Router>
+                        <h1>Dentelo.</h1>
+                        <div className={`nav-links ${menuOpen ? "open" : ""}`}>
+
+
+                            <NavLink to="/" className="link">Home </NavLink>
+                            <NavLink to="/services" className="link">Services </NavLink>
+                            <NavLink to="/about" className="link">About </NavLink>
+                            <NavLink to="/blog" className="link">Blog </NavLink>
+                            <NavLink to="/contact" className="link">Contact</NavLink>
+                            <button className="hhh">Book an Appointment</button>
+                        </div>
+
+
+                        <div className="hamburger" onClick={toggleMenu}>
+                            {menuOpen ? "✖" : "☰"}
+                        </div>
+
+
+                        <Routes>
+                            <Route path="/"></Route>
+                            <Route path="/services"></Route>
+                            <Route path="/about"></Route>
+                            <Route path="/blog"></Route>
+                            <Route path="/contact"></Route>
+
+                        </Routes>
+
+                    </Router>
+                </div>
+
+
+                <div className="tnav">
+
+
+
+                    <div className="best">
+                        <h3 className="dentelo">WELCOME TO DENTELO</h3>
+                        <h1>We Are The Best Dental Service</h1>
+                        <p>Donec vitae libero non enim placerat eleifend aliquam erat volutpat. Curabitur  diam ex, dapibus purus sapien, cursus sed nisl tristique, commodo gravida lectus non.</p>
+                    </div>
+
+
+
+                    <div className="ppp">
+                        <img src={image36} alt="" />
+                    </div>
+
+                </div>
+
+                <div className="kya">
+
+                    <input className="inpp" placeholder="Your Email Address" type="text" name="" id="" />
+                    <button>Get CallBack</button>
+
+                </div>
+
+            </header>
+
+        </div>
+    );
+}
+
+USER ADD.JSX
+
+import "./CSS/style.css"
+import image20 from "./assets/image20.png"
+import image21 from "./assets/image21.png"
+import image22 from "./assets/image23.png"
+import image23 from "./assets/image23.png"
+import image24 from "./assets/image24.png"
+import image25 from "./assets/image25.png"
+import image26 from "./assets/image26.png"
+
+export default function UserAdd(){
+
+
+return(
+
+    <div>
+      <section>
+
+        <div className="our">
+            <h3>Our Services</h3>
+            <h1>What we Provide</h1>
+        </div>
+
+<div className="services">
+  <div className="left">
+    <div className="card">
+      <img src={image20} alt="Root Canal" />
+      <div>
+        <h3>Root Canal</h3>
+        <p>Aenean eleifend turpis tellus, nec laoreet metus elementum ac.</p>
+      </div>
+    </div>
+
+    <div className="card">
+      <img src={image22} alt="Cosmetic Teeth" />
+      <div>
+        <h3>Cosmetic Teeth</h3>
+        <p>Aenean eleifend turpis tellus, nec laoreet metus elementum ac.</p>
+      </div>
+    </div>
+
+    <div className="card">
+      <img src={image24} alt="Live Advisory" />
+      <div>
+        <h3>Live Advisory</h3>
+        <p>Aenean eleifend turpis tellus, nec laoreet metus elementum ac.</p>
+      </div>
+    </div>
+  </div>
+
+  <div className="center-image">
+    <img src={image26} alt="Tooth" />
+  </div>
+
+  <div className="right">
+    <div className="card">
+      <img src={image21} alt="Alignment Teeth" />
+      <div>
+        <h3>Alignment Teeth</h3>
+        <p>Aenean eleifend turpis tellus, nec laoreet metus elementum ac.</p>
+      </div>
+    </div>
+
+    <div className="card">
+      <img src={image23} alt="Oral Hygiene" />
+      <div>
+        <h3>Oral Hygiene</h3>
+        <p>Aenean eleifend turpis tellus, nec laoreet metus elementum ac.</p>
+      </div>
+    </div>
+
+    <div className="card">
+      <img src={image25} alt="Cavity Inspection" />
+      <div>
+        <h3>Cavity Inspection</h3>
+        <p>Aenean eleifend turpis tellus, nec laoreet metus elementum ac.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+</div>
+)
+
+}
+
+
+
+USER EDIT.JSX
+
+import "./CSS/style.css"
+import image27 from "./assets/image27.png"
+import image28 from "./assets/image28.png"
+import image29 from "./assets/image29.png"
+import image30 from "./assets/image30.png"
+import image31 from "./assets/image31.png"
+import image35 from "./assets/image35.png"
+
+
+export default function UserEdit() {
+
+    return (
+
+
+        <div>
+            <section>
+                <div className="faisla">
+
+                    <div className="pic">
+                        <img src={image27} alt="" />
+                    </div>
+
+                    <div className="health">
+                        <h4>About Us</h4>
+                        <h1>We Care For Your Dental Health</h1>
+                        <p>Aliquam ac sem et diam iaculis efficitur. Morbi in enim odio. Nullam quis volutpat est, sed dapibus sapien. Cras condimentum eu velit id tempor.  Curabitur purus sapien, cursus sed nisl tristique, commodo vehicula.</p>
+
+                        <button>Read More</button>
+
+                    </div>
+                </div>
+
+                <div className="doctor">
+                    <h3>Our Doctor</h3>
+                    <h1>Best Expert Doctor</h1>
+                </div>
+
+
+
+                <div className="hev">
+
+                    <div className="howard">
+                        <img src={image28} alt="" />
+                        <h1>Howard Holmanes</h1>
+                        <h4>Dentist</h4>
+
+                    </div>
+
+
+                    <div className="thomson">
+                        <img src={image29} alt="" />
+                        <h1>Ella Thompson</h1>
+                        <h4>Dentist</h4>
+                    </div>
+
+
+
+                    <div className="cooper">
+                        <img src={image30} alt="" />
+                        <h1>Vincent Cooper</h1>
+                        <h4>Dentist</h4>
+                    </div>
+
+
+
+
+                    <div className="bryant">
+                        <img src={image31} alt="" />
+                        <h1>Daniell Bryant</h1>
+                        <h4>Dentist</h4>
+                    </div>
+                </div>
+
+
+                <div className="appointment-section">
+                    <div className="appointment-container">
+                        <div className="doctor-image">
+                            <img src={image35} alt="" />
+                        </div>
+                        <div className="appointment-content">
+                            <p className="subheading">Book Dental Appointment</p>
+                            <h2>We Are open And Welcoming Patients</h2>
+                            <button className="appointment-btn">BOOK APPOINTMENT</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    )
+}
+
+WORLD .JSX
+
+import "./CSS/style.css"
+import image32 from "./assets/image32.png"
+import image33 from "./assets/image33.png"
+import image34 from "./assets/image34.png"
+
+
+export default function World(){
+
+return(
+
+
+    <div>
+        <section>
+        <div className="ogl">
+            <h4>Our Goals</h4>
+            <h1>Latest Blogs and News</h1>
+        </div>
+
+<div className="cds">
+        <div className="nulla">
+            <img src={image32} alt="" />
+            <h2>Cras accumsan nulla</h2>
+            <p>Curabitur sagittis libero tincidunt tempor finibus. Mauris at dignissim ligula, nec tristique orci.</p>
+            <a href="">Read More</a>
+        </div>
+
+        <div className="dras">
+            <img src={image33} alt="" />
+            <h2>Dras accumusan nulla</h2>
+            <p>Curabitur sagittis libero tincidunt tempor finibus. Mauris at dignissim ligula, nec tristique orci.</p>
+            <a href="">Read More</a>
+        </div>
+
+        <div className="seas">
+            <img src={image34} alt="" />
+            <h2>Seas accumusan nulla</h2>
+            <p>Curabitur sagittis libero tincidunt tempor finibus. Mauris at dignissim ligula, nec tristique orci.</p>
+            <a href="">Read More</a>
+        </div>
+        </div>
+        </section>
+
+    </div>
+)
+
+}
+
+WRAPPER.JSX
+
+
+import "./CSS/style.css"
+export default function Wrapper(){
+
+
+return(
+
+
+<div>
+    <footer className="oha">
+
+        <div className="sultan">
+            <h1>Dentelo</h1>
+            <p>Mauris non nisi semper</p>
+        </div>
+
+
+        <div>
+            <h1>Other Links</h1>
+            <h4>Home</h4>
+            <h4>About US</h4>
+            <h4>Services</h4>
+        </div>
+
+
+        <div className="uuu">
+            <h1>Our Services</h1>
+            <h4><span>+</span> Root Canal</h4>
+            <h4><span>+</span> Allignment Teeth</h4>
+            <h4><span>+</span> Cosmetic Teeth</h4>
+        </div>
+
+        <div className="cnt">
+            <h1>Contacts</h1>
+            <span><i className="fas fa-envelope"></i> 1247/Plot No. 39, 15th Phase, LHB Colony, Kanpur</span>
+            <br />
+            <br />
+            <span><i className="fas fa-phone-alt"></i> 0333-3302501</span>
+        </div>
+
+    </footer>
+</div>
+
+)
+
+}
+
+
+STYLE.CSS
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+
+.top-bar {
+  background-color: #002b5e;
+  color: #fff;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  cursor: pointer;
+  gap: 740px;
+  font-size: 20px;
+
+
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.contact-info i {
+  margin-right: 5px;
+  color: #66ccff;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.social-icons a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #66ccff;
+}
+
+.message {
+  position: relative;
+  top: 1px;
+}
+
+.nav {
+  text-align: center;
+  padding-top: 40px;
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.hamburger {
+  display: none;
+}
+
+.nav button {
+  background-color: #0072ff;
+  height: 50px;
+  border: none;
+  color: white;
+  border-radius: 10px 40px
+}
+
+.nav button:hover {
+  background-color: #00aaff;
+  box-shadow: 20px 10px 15px #00ccff, 0 0 30px #00ccff, 0 0 45px #00ccff;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.active:hover {
+  color: brown;
+}
+
+.dentelo {
+  color: blue;
+}
+
+
+
+
+.best h1 {
+  width: 400px;
+  font-size: 50px;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+
+}
+
+.best p {
+  font-size: 20px;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}
+
+
+.best {
+  margin-left: 60px;
+  
+}
+
+
+.ppp img {
+  width: 350px;
+  margin-right: 100px;
+
+
+
+}
+
+.tnav {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+
+}
+
+.kya {
+  background-color: white;
+  width: 90%;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 198, 255, 0.4);
+  position: relative;
+  bottom: 140px;
+  right: 360px;
+}
+
+.kya input {
+  flex: 1;
+  height: 45px;
+  padding: 0 15px;
+  font-size: 16px;
+  border: 2px solid #00c6ff;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.kya input::placeholder {
+  font-size: 16px;
+  color: #aaa;
+}
+
+.kya input:focus {
+  border-color: #00aaff;
+}
+
+.kya button {
+  height: 45px;
+  width: 150px;
+  background-color: #00c6ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 10px #00c6ff;
+  transition: all 0.3s ease;
+}
+
+.kya button:hover {
+  background-color: #00aaff;
+  box-shadow: 0 0 12px #00ccff, 0 0 20px #00ccff;
+}
+
+
+
+.our {
+  text-align: center;
+  color: blue;
+  margin-bottom: 30px;
+}
+
+.services {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  padding: 40px 20px;
+}
+
+.left,
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.center-image img {
+  width: 220px;
+  height: auto;
+  display: block;
+}
+
+.card {
+  border: 1px solid #ccc;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 50px;
+  height: 50px;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.card p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #555;
+}
+
+
+
+.pic img {
+  width: 300px;
+  margin-right: 200px;
+
+}
+
+
+
+.faisla {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.health h4 {
+  color: blue;
+}
+
+.health {
+  position: relative;
+  right: 140px;
+}
+
+.health p {
+  width: 400px;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}
+
+.health button {
+  background-color: #0072ff;
+  color: white;
+  height: 40px;
+  width: 80px;
+  border: none;
+  border-radius: 4px;
+}
+
+.doctor {
+  text-align: center;
+  color: blue;
+}
+
+
+.howard img {
+  width: 200px;
+}
+
+.howard {
+  border: 3px solid black;
+  width: 200px;
+
+}
+
+.howard h4 {
+  color: blue;
+}
+
+.thomson img {
+  width: 200px;
+
+}
+
+
+.thomson {
+  border: 3px solid black;
+  width: 200px;
+
+}
+
+.thomson h4 {
+  color: blue;
+}
+
+.cooper img {
+  width: 200px;
+
+
+}
+
+.cooper {
+  border: 3px solid black;
+  width: 200px;
+}
+
+.cooper h4 {
+  color: blue;
+}
+
+.bryant img {
+  width: 200px;
+}
+
+.bryant {
+  border: 3px solid black;
+  width: 200px;
+
+}
+
+.bryant h4 {
+  color: blue;
+}
+
+
+.hev {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  text-align: center;
+}
+
+.appointment-section {
+  background-color: #002b5e;
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 140px;
+  height: 300px;
+}
+
+.appointment-container {
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.doctor-image img {
+  max-width: 400px;
+  border-radius: 10px;
+  padding-bottom: 160px;
+
+}
+
+.appointment-content {
+  color: #fff;
+  max-width: 500px;
+
+}
+
+.subheading {
+  color: #66ccff;
+  font-weight: bold;
+}
+
+.appointment-content h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.appointment-btn {
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  height: 50px;
+}
+
+.appointment-btn:hover {
+  background: linear-gradient(to right, #0072ff, #00c6ff);
+}
+
+
+.ogl h4 {
+  color: blue;
+
+}
+
+
+.ogl {
+  text-align: center;
+}
+
+.nulla {
+  border: 3px solid black;
+  width: 300px;
+  overflow: hidden
+}
+
+.nulla p {
+  padding-left: 5px;
+}
+
+.nulla h2 {
+  padding-left: 5px;
+}
+
+.nulla a {
+  padding-left: 5px;
+  position: relative;
+  bottom: 5px;
+}
+
+
+.nulla img {
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+
+}
+
+.nulla img:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px rgba(0, 204, 255, 0.3);
+}
+
+
+.dras {
+  border: 3px solid black;
+  width: 300px;
+  overflow: hidden;
+
+}
+
+.dras p {
+  padding-left: 5px;
+}
+
+.dras h2 {
+  padding-left: 5px;
+}
+
+.dras a {
+  padding-left: 5px;
+  position: relative;
+  bottom: 5px;
+}
+
+
+.dras img {
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.dras img:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px rgba(0, 204, 255, 0.3);
+}
+
+
+.seas {
+  border: 3px solid black;
+  width: 300px;
+  overflow: hidden;
+
+}
+
+.seas p {
+  padding-left: 5px;
+}
+
+.seas h2 {
+  padding-left: 5px;
+}
+
+.seas a {
+  padding-left: 5px;
+  position: relative;
+  bottom: 5px;
+}
+
+
+.seas img {
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.seas img:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px rgba(0, 204, 255, 0.3);
+}
+
+
+
+.cds {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+
+
+.oha {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  gap: 60px;
+  margin-top: 40px;
+  padding-top: 50px;
+}
+
+.uuu span {
+  color: red;
+}
+
+.cnt i {
+  color: red;
+}
+
+
+
+
+#scrollBtn {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 99;
+  font-size: 30px;
+  border: none;
+  outline: none;
+  background: #0ff;
+  color: #000;
+  cursor: pointer;
+  padding: 12px 16px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+  display: none;
+  transition: all 0.3s ease;
+  height: 50px;
+}
+
+#scrollBtn:hover {
+  background: #0cf;
+  box-shadow: 0 0 15px #0cf, 0 0 30px #0cf;
+}
+
+
+
+
+
+
+@media (max-width: 600px) {
+  .nav {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px 20px;
+  }
+
+  .hamburger {
+    display: block;
+    font-size: 28px;
+    cursor: pointer;
+    position: absolute;
+    right: 25px;
+    z-index: 1001;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: #fff;
+    width: 100%;
+    display: none;
+    text-align: center;
+    gap: 20px;
+    padding: 20px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .top-bar {
+    display: none;
+  }
+
+  .nav button {
+    width: 100%;
+    height: 45px;
+    font-size: 16px;
+  }
+
+  .best h1
+   {
+    width: 100%;
+    font-size: 30px;
+    text-align: center;
+  }
+
+
+  .health p{
+    font-size: 15px;
+    width: 100%;
+    text-align: left;
+  }
+
+
+  .best p{
+    font-size: 17px;
+    width: 100%;
+    text-align: left;
+  }
+
+ 
+
+  .best {
+    right: 0;
+    padding:  10px;
+  text-align: center;
+  margin-right: 40px;
+
+  }
+
+  .ppp img,
+  .pic img,
+  .center-image img {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .kya {
+    flex-direction: column;
+    align-items: stretch;
+    right: 0;
+    bottom: 0;
+    width: 90%;
+    max-width: 100%;
+    padding: 20px;
+    height: 100px;
+  }
+
+
+  .kya button {
+    width: 100%;
+  }
+
+
+  .services {
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    width: 250px;
+    position: relative;
+    right: 20px;
+    
+    
+    
+  }
+
+  .card {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .faisla {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .health {
+    right: 0;
+    padding: 0 15px;
+    text-align: center;
+  }
+
+  .hev {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .appointment-section {
+    flex-direction: column;
+    padding: 30px 15px;
+    height: auto;
+  }
+
+  .doctor-image img {
+    max-width: 100%;
+    padding-bottom: 20px;
+  }
+
+  .appointment-content {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .cds {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    font-size:15px;
+  }
+
+  .oha {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+    padding: 30px 15px;
+  }
+
+  #scrollBtn {
+    bottom: 20px;
+    right: 20px;
+    font-size: 24px;
+    padding: 10px 14px;
+  }
+
+  .our {
+    margin-top: 470px;
+  }
+
+  .tnav {
+    flex-direction: column;
+  }
+
+  .nulla a{
+    position: relative;
+    bottom: 7px;
+  }
+
+  .dras a{
+  position: relative;
+  bottom: 7px;
+  }
+
+  .seas a{
+    position: relative;
+    bottom: 7px;
+  }
+  
+}
+
+
+ @media (min-width: 601px) and (max-width:1300px){
+
+  .top-bar{
+    display: none;
+  }
+
+  .tnav{
+
+    margin-left: 120px;
+    
+  }
+
+  .kya {
+
+    margin-right: 98px;
+    
+
+  }
+
+  .ppp img{
+    margin-right: 80px;
+  }
+
+  .center-image img{
+    width: 240px;
+  }
+
+  .card{
+    width: 230px;
+  }
+
+  .oha{
+    gap: 40px;
+
+  }
+
+  .sultan{
+    margin-left: 15px;
+  }
+
+  .best{
+    position: relative;
+    right: 130px;
+  }
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
