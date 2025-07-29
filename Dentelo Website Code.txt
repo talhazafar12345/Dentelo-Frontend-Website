@@ -545,11 +545,14 @@ body {
   overflow-wrap: break-word;
 }
 
+ .best {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: 55px;
 
-.best {
-  margin-left: 60px;
-  
-}
+  }
 
 
 .ppp img {
