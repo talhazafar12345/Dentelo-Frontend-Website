@@ -2,174 +2,171 @@ APP.JSX
 
 import "./CSS/style.css"
 import User from "./User"
+
+export default function Print(){
+
+
+return(
+
+  <div>
+
+
+
+      <div className="pehla">
+
+    <div>
+      <span className="tesra"><i className="fa-solid fa-message"></i> info@example.com</span>
+      <span className="dosra"><i className="fa-solid fa-phone"></i> +92-333-3302501</span>
+    </div>
+
+
+    <div className="chota">
+      <span><i className="fa-brands fa-facebook "></i></span>
+      <span><i className="fa-brands fa-instagram "></i></span>
+      <span><i className="fa-brands fa-twitter "></i></span>
+      <span><i className="fa-brands fa-youtube"></i></span>
+    </div> 
+      </div>
+
+  
+      <User />
+      
+
+  </div>
+)
+
+}
+
+USER.JSX
+
+import "./CSS/style.css";
+import image36 from "./assets/image36.png"
+import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
 import UserAdd from "./UserAdd"
 import UserEdit from "./UserEdit"
 import World from "./World"
 import Wrapper from "./Wrapper"
 
-export default function Print() {
-
-window.onscroll = function() {
-  const btn = document.getElementById("scrollBtn");
-  if (document.documentElement.scrollTop) {
-    btn.style.display = "block";
-  } else {
-    btn.style.display = "none";
-  }
-};
-
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-    return (
-      
-
-        <div className="pehla">
-          <header>
-
-            <div className="top-bar">
-                <div className="contact-info">
-                    <span><i className="fas fa-envelope"></i>info@example.com</span>
-                    <span><i className="fas fa-phone-alt"></i>+91-7052-101-786</span>
-                </div>
-                <div className="social-icons">
-                    <a href="#"><i className="fab fa-facebook-f"></i></a>
-                    <a href="#"><i className="fab fa-instagram"></i></a>
-                    <a href="#"><i className="fab fa-twitter"></i></a>
-                    <a href="#"><i className="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            <User />
-            <UserAdd />
-            <UserEdit />
-            <World />
-            <Wrapper />
-
-            <button onClick={scrollToTop} id="scrollBtn" title="Go to top">↑</button>
-
-            </header>
-        </div>
-    )
-}
-
-USER.JSX
-
-import "./CSS/style.css"
-import image19 from "./assets/image19.png";
-import image36 from "./assets/image36.png";
-import { useState } from "react";
-
-
-import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router";
-
 export default function User() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState();
 
-    const [menuOpen, setMenuOpen] = useState(false);
-    const toggleMenu = () => setMenuOpen(!menuOpen);
+  const toggleMenu = () => setMenuOpen(!menuOpen);
 
+  useEffect(() => {
 
-    return (
+    const handleScroll = () => {
+      if (window.scrollY) {
+        setScrolled(!scrolled);
+      } else {
+        setScrolled(scrolled);
+      }
+    };
 
-        <div
+    window.addEventListener("scroll", handleScroll)
 
-            style={{
-                backgroundImage: `url(${image19})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                height: "700px",
-            }}
-        >
-            <header>
+  }, []);
 
-                <div className="nav">
-                    <Router>
-                        <h1>Dentelo.</h1>
-                        <div className={`nav-links ${menuOpen ? "open" : ""}`}>
+  return (
 
 
-                            <NavLink to="/" className="link">Home </NavLink>
-                            <NavLink to="/services" className="link">Services </NavLink>
-                            <NavLink to="/about" className="link">About </NavLink>
-                            <NavLink to="/blog" className="link">Blog </NavLink>
-                            <NavLink to="/contact" className="link">Contact</NavLink>
-                            <button className="hhh">Book an Appointment</button>
-                        </div>
+    <div>
+      <Router>
+
+        <div className="panchwa">
 
 
-                        <div className="hamburger" onClick={toggleMenu}>
-                            {menuOpen ? "✖" : "☰"}
-                        </div>
+          <div className={`nav ${scrolled ? "scrolled" : ""}`}>
+            <h1 className="den">Dentelo</h1>
+
+            <div className={`navlink ${menuOpen ? "open" : ""}`}>
+              <NavLink className="link" to="/">Home</NavLink>
+              <NavLink className="link" to="/services">Services</NavLink>
+              <NavLink className="link" to="/about">About</NavLink>
+              <NavLink className="link" to="/blog">Blog</NavLink>
+              <NavLink className="link" to="/contact">Contact</NavLink>
+              <button>Book Appointment</button>
+            </div>
+
+            <div className="hamburger" onClick={toggleMenu}>
+              {menuOpen ? "✖" : "☰"}
+            </div>
 
 
-                        <Routes>
-                            <Route path="/"></Route>
-                            <Route path="/services"></Route>
-                            <Route path="/about"></Route>
-                            <Route path="/blog"></Route>
-                            <Route path="/contact"></Route>
+          </div>
 
-                        </Routes>
-
-                    </Router>
-                </div>
+          <div className="athva">
 
 
-                <div className="tnav">
+            <div className="chata">
+              <h3>WELCOME TO DENTELO</h3>
+              <h1>We Are Best Dental service</h1>
+              <p>Donec vitae libero non enim placerat eleifend aliquam erat volutpat. Curabitur diam ex, dapibus purus sapien, cursus sed nisl tristique, commodo gravida lectus non.</p>
 
+              <div className="nova">
 
+                <div><input placeholder="Your Email Address" type="text" name="" id="" /></div>
+                <div><button>Get Call Back</button></div>
+              </div>
 
-                    <div className="best">
-                        <h3 className="dentelo">WELCOME TO DENTELO</h3>
-                        <h1>We Are The Best Dental Service</h1>
-                        <p>Donec vitae libero non enim placerat eleifend aliquam erat volutpat. Curabitur  diam ex, dapibus purus sapien, cursus sed nisl tristique, commodo gravida lectus non.</p>
-                    </div>
+            </div>
 
+            <div className="satva">
+              <img src={image36} alt="" />
+            </div>
 
+          </div>
+          <UserAdd />
+          <UserEdit />
+          <World />
+          <Wrapper />
 
-                    <div className="ppp">
-                        <img src={image36} alt="" />
-                    </div>
-
-                </div>
-
-                <div className="kya">
-
-                    <input className="inpp" placeholder="Your Email Address" type="text" name="" id="" />
-                    <button>Get CallBack</button>
-
-                </div>
-
-            </header>
 
         </div>
-    );
+
+        <Routes>
+          <Route path="/" />
+          <Route path="/services" />
+          <Route path="/about" />
+          <Route path="/blog" />
+          <Route path="/contact" />
+        </Routes>
+      </Router>
+
+    </div>
+  );
 }
 
-USER ADD.JSX
+USERADD.JSX
 
 import "./CSS/style.css"
-import image20 from "./assets/image20.png"
-import image21 from "./assets/image21.png"
-import image22 from "./assets/image23.png"
-import image23 from "./assets/image23.png"
-import image24 from "./assets/image24.png"
-import image25 from "./assets/image25.png"
-import image26 from "./assets/image26.png"
+import  image20 from "./assets/image20.png"
+import  image21 from "./assets/image21.png"
+import  image22 from "./assets/image22.png"
+import  image23 from "./assets/image23.png"
+import  image24 from "./assets/image24.png"
+import  image25 from "./assets/image25.png"
+import  image26 from "./assets/image26.png"
+
+
 
 export default function UserAdd(){
 
-
 return(
 
-    <div>
-      <section>
+  <div>
 
-        <div className="our">
-            <h3>Our Services</h3>
-            <h1>What we Provide</h1>
-        </div>
 
-<div className="services">
+  
+    <div className="daswa">
+
+      <h2>Our Services</h2>
+      <h1>What We Provide</h1>
+
+    </div>
+
+  <div className="services">
   <div className="left">
     <div className="card">
       <img src={image20} alt="Root Canal" />
@@ -226,15 +223,16 @@ return(
     </div>
   </div>
 </div>
-</section>
-</div>
+
+  
+  </div>
 )
+
 
 }
 
 
-
-USER EDIT.JSX
+USEREDIT.JSX
 
 import "./CSS/style.css"
 import image27 from "./assets/image27.png"
@@ -242,142 +240,162 @@ import image28 from "./assets/image28.png"
 import image29 from "./assets/image29.png"
 import image30 from "./assets/image30.png"
 import image31 from "./assets/image31.png"
-import image35 from "./assets/image35.png"
+
 
 
 export default function UserEdit() {
 
+
+
     return (
 
-
         <div>
-            <section>
-                <div className="faisla">
 
-                    <div className="pic">
-                        <img src={image27} alt="" />
-                    </div>
 
-                    <div className="health">
-                        <h4>About Us</h4>
-                        <h1>We Care For Your Dental Health</h1>
-                        <p>Aliquam ac sem et diam iaculis efficitur. Morbi in enim odio. Nullam quis volutpat est, sed dapibus sapien. Cras condimentum eu velit id tempor.  Curabitur purus sapien, cursus sed nisl tristique, commodo vehicula.</p>
 
-                        <button>Read More</button>
+            <div className="atharve">
 
-                    </div>
-                </div>
+       
 
-                <div className="doctor">
+            <div className="solve">
+                <img src={image27} alt="" />
+
+            </div>
+
+
+
+            <div className="satarve">
+                <h3>ABOUT US</h3>
+                <h1>We Care For Your Dental Health</h1>
+                <p>Aliquam ac sem et diam iaculis efficitur. Morbi in enim odio. Nullam quis volutpat est, sed dapibus sapien. Cras condimentum eu velit id tempor. Curabitur purus sapien, cursus sed nisl tristique, commodo vehicula arcu.
+                    Aliquam erat volutpat. Aliquam enim massa, sagittis blandit ex mattis, ultricies posuere sapien. Morbi a dignissim enim. Fusce elementum, augue in elementum porta, sapien nunc volutpat ex, a accumsan nunc lectus eu lectus.</p>
+                <button>Read More</button>
+            </div>
+                 </div>
+
+
+
+
+                 <div className="den">
                     <h3>Our Doctor</h3>
-                    <h1>Best Expert Doctor</h1>
-                </div>
+                    <h1>Best Expert Dentist</h1>
+                 </div>
+
+
+                 <div className="hop">
+                 <div className="our">
+                    <img src={image28} alt="" />
+                    <h2>Howard Holmes</h2>
+                    <p>Dentist</p>
+                 </div>
+
+                    
+                  <div className="our">
+                    <img src={image29} alt="" />
+                    <h2>Ella Thompson</h2>
+                    <p>Dentist</p>
+                 </div>
 
 
 
-                <div className="hev">
-
-                    <div className="howard">
-                        <img src={image28} alt="" />
-                        <h1>Howard Holmanes</h1>
-                        <h4>Dentist</h4>
-
-                    </div>
-
-
-                    <div className="thomson">
-                        <img src={image29} alt="" />
-                        <h1>Ella Thompson</h1>
-                        <h4>Dentist</h4>
-                    </div>
-
-
-
-                    <div className="cooper">
-                        <img src={image30} alt="" />
-                        <h1>Vincent Cooper</h1>
-                        <h4>Dentist</h4>
-                    </div>
+                  <div className="our">
+                    <img src={image30} alt="" />
+                    <h2>Vincent Hooper</h2>
+                    <p>Dentist</p>
+                 </div>
 
 
 
 
-                    <div className="bryant">
-                        <img src={image31} alt="" />
-                        <h1>Daniell Bryant</h1>
-                        <h4>Dentist</h4>
-                    </div>
-                </div>
+                  <div className="our">
+                    <img src={image31} alt="" />
+                    <h2>Danielle Bryant</h2>
+                    <p>Dentist</p>
+                 </div>
+                  </div>
 
 
-                <div className="appointment-section">
-                    <div className="appointment-container">
-                        <div className="doctor-image">
-                            <img src={image35} alt="" />
-                        </div>
-                        <div className="appointment-content">
-                            <p className="subheading">Book Dental Appointment</p>
-                            <h2>We Are open And Welcoming Patients</h2>
-                            <button className="appointment-btn">BOOK APPOINTMENT</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </div>
     )
+
 }
 
-WORLD .JSX
+WORLD.JSX
 
 import "./CSS/style.css"
 import image32 from "./assets/image32.png"
 import image33 from "./assets/image33.png"
 import image34 from "./assets/image34.png"
+import image35 from "./assets/image35.png"
 
 
-export default function World(){
+export default function World() {
 
-return(
+    return (
 
 
-    <div>
-        <section>
-        <div className="ogl">
-            <h4>Our Goals</h4>
-            <h1>Latest Blogs and News</h1>
+
+        <div>
+
+            <div className="back">
+
+
+                <div className="mmm">
+
+                    <img src={image35} alt="" />
+                </div>
+
+
+
+
+                <div className="book">
+                    <h3>Book Dentail Appointment</h3>
+                    <h1>We Are open And Welcoming Patients</h1>
+                    <button>Book Appointment</button>
+                </div>
+
+            </div>
+
+
+
+            <div>
+                <div className="ogl">
+                    <h2>Our Blogs</h2>
+                    <h1>Latest Blogs and News</h1>
+                </div>
+
+                <div className="cds">
+                    <div className="nulla">
+                        <img src={image32} alt="" />
+                        <h2>Cras accumsan nulla</h2>
+                        <p>Curabitur sagittis libero tincidunt tempor finibus. Mauris at dignissim ligula, nec tristique orci.</p>
+                        <a href="">Read More</a>
+                    </div>
+
+                    <div className="dras">
+                        <img src={image33} alt="" />
+                        <h2>Dras accumusan nulla</h2>
+                        <p>Curabitur sagittis libero tincidunt tempor finibus. Mauris at dignissim ligula, nec tristique orci.</p>
+                        <a href="">Read More</a>
+                    </div>
+
+                    <div className="seas">
+                        <img src={image34} alt="" />
+                        <h2>Seas accumusan nulla</h2>
+                        <p>Curabitur sagittis libero tincidunt tempor finibus. Mauris at dignissim ligula, nec tristique orci.</p>
+                        <a href="">Read More</a>
+                    </div>
+                </div>
+
+            </div>
+
+
         </div>
-
-<div className="cds">
-        <div className="nulla">
-            <img src={image32} alt="" />
-            <h2>Cras accumsan nulla</h2>
-            <p>Curabitur sagittis libero tincidunt tempor finibus. Mauris at dignissim ligula, nec tristique orci.</p>
-            <a href="">Read More</a>
-        </div>
-
-        <div className="dras">
-            <img src={image33} alt="" />
-            <h2>Dras accumusan nulla</h2>
-            <p>Curabitur sagittis libero tincidunt tempor finibus. Mauris at dignissim ligula, nec tristique orci.</p>
-            <a href="">Read More</a>
-        </div>
-
-        <div className="seas">
-            <img src={image34} alt="" />
-            <h2>Seas accumusan nulla</h2>
-            <p>Curabitur sagittis libero tincidunt tempor finibus. Mauris at dignissim ligula, nec tristique orci.</p>
-            <a href="">Read More</a>
-        </div>
-        </div>
-        </section>
-
-    </div>
-)
+    )
 
 }
 
 WRAPPER.JSX
-
 
 import "./CSS/style.css"
 export default function Wrapper(){
@@ -431,207 +449,261 @@ STYLE.CSS
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
 }
 
 
-.top-bar {
-  background-color: #002b5e;
-  color: #fff;
-  padding: 30px;
-  display: flex;
-  justify-content: center;
-  font-size: 12px;
-  cursor: pointer;
-  gap: 740px;
-  font-size: 20px;
-
-
-}
-
-.contact-info {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.contact-info i {
-  margin-right: 5px;
-  color: #66ccff;
-}
-
-.social-icons {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
-}
-
-.social-icons a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.social-icons a:hover {
-  color: #66ccff;
-}
-
-.message {
-  position: relative;
-  top: 1px;
-}
 
 .nav {
-  text-align: center;
-  padding-top: 40px;
+  position: sticky;
+  top: -100px;
+  padding: 20px 30px;
   display: flex;
-  gap: 40px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  transition: top 0.5s ease, background-color 0.4s ease;
+  z-index: 1000;
+}
+
+.nav.scrolled {
+  top: 0;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  height: 60px;
+}
+
+.nav h1 {
+  color: black;
+  font-size: 35px;
+  margin-left: 40px;
+  
+
 
 }
 
-
-.nav-links {
+.navlink {
   display: flex;
+  align-items: center;
   gap: 30px;
-  align-items: center;
-}
-
-.hamburger {
-  display: none;
-}
-
-.nav button {
-  background-color: #0072ff;
-  height: 50px;
-  border: none;
-  color: white;
-  border-radius: 10px 40px
-}
-
-.nav button:hover {
-  background-color: #00aaff;
-  box-shadow: 20px 10px 15px #00ccff, 0 0 30px #00ccff, 0 0 45px #00ccff;
+  margin-right: 100px;
 }
 
 .link {
   text-decoration: none;
+  font-size: 20px;
   color: black;
 }
 
-.active:hover {
+.navlink button {
+  background-color: blue;
+  width: 200px;
+  height: 60px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-size: 20px;
+
+}
+
+.link:hover {
   color: brown;
 }
 
-.dentelo {
+
+.navlink button:hover {
+  background-color: lightblue;
+  color: black;
+}
+
+.hamburger {
+  display: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+.close {
+  display: none;
+  font-size: 28px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+
+
+
+.pehla {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 800px;
+  background-color: #00264E;
+  color: white;
+  height: 50px;
+}
+
+.dosra {
+  font-size: 20px;
+  position: relative;
+  left: 10px;
+
+}
+
+.tesra {
+
+  font-size: 20px;
+
+
+}
+
+.chota {
+
+  display: flex;
+  gap: 20px;
+  position: relative;
+  right: 80px;
+
+}
+
+.fa-phone {
+  color: blue;
+}
+
+.fa-message {
   color: blue;
 }
 
 
+.fa-facebook:hover {
+  color: blue;
+}
 
+.fa-instagram:hover {
 
-.best h1 {
-  width: 400px;
-  font-size: 50px;
-  line-height: 1.5;
-  overflow-wrap: break-word;
+  color: blue;
+}
+
+.fa-twitter:hover {
+
+  color: blue;
+}
+
+.fa-youtube:hover {
+  color: blue;
+}
+
+.panchwa {
+  background-color: #F6FAFD;
 
 }
 
-.best p {
-  font-size: 20px;
-  line-height: 1.5;
-  overflow-wrap: break-word;
+.chata {
+  margin-left: 30px;
 }
 
- .best {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-right: 55px;
-
-  }
-
-
-.ppp img {
-  width: 350px;
-  margin-right: 100px;
-
-
-
+.chata h3 {
+  font-size: 30px;
+  color: blue;
 }
 
-.tnav {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-
-}
-
-.kya {
-  background-color: white;
+.chata h1 {
+  font-size: 90px;
   width: 90%;
-  max-width: 500px;
-  margin: 40px auto;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 198, 255, 0.4);
-  position: relative;
-  bottom: 140px;
-  right: 360px;
+  
 }
 
-.kya input {
-  flex: 1;
-  height: 45px;
-  padding: 0 15px;
-  font-size: 16px;
-  border: 2px solid #00c6ff;
-  border-radius: 5px;
-  outline: none;
-  transition: border-color 0.3s ease;
+.chata p {
+  font-size: 25px;
+  width: 90%;
 }
 
-.kya input::placeholder {
-  font-size: 16px;
-  color: #aaa;
+.chata input {
+  width: 300px;
+  height: 50px;
 }
 
-.kya input:focus {
-  border-color: #00aaff;
+input::placeholder {
+  font-size: 20px;
+  padding-left: 10px;
 }
 
-.kya button {
-  height: 45px;
+.chata button {
   width: 150px;
-  background-color: #00c6ff;
+  height: 56px;
+  background-color: blue;
   color: white;
   border: none;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 0 10px #00c6ff;
-  transition: all 0.3s ease;
+  font-size: 20px;
 }
 
-.kya button:hover {
-  background-color: #00aaff;
-  box-shadow: 0 0 12px #00ccff, 0 0 20px #00ccff;
+.chata button:hover{
+  background-color: lightblue;
+  color: black;
 }
 
+.satva img {
+  width: 490px;
+  position: relative;
+  bottom: 110px;
+  margin-right: 90px;
+
+}
+
+.athva {
+  display: flex;
+  margin-top: 120px;
+  margin-left: 40px;
 
 
-.our {
+}
+
+.nova {
+  display: flex;
+  align-items: center;
+}
+
+.daswa{
   text-align: center;
-  color: blue;
-  margin-bottom: 30px;
+  margin-top: 50px;
 }
+
+.daswa h1{
+  font-size: 60px;
+}
+
+.daswa h2{
+  font-size: 40px;
+}
+
+
+.gairwa{
+  border: 1px solid gray;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  height: auto;
+  padding-bottom: 10px;
+
+}
+
+
+
+.gairwa img{
+
+width: 60px;
+margin-left: 30px;
+padding-bottom: 50px;
+
+
+}
+
+.barwah p{
+  width: 80%;
+  font-size: 17px;
+
+}
+
 
 .services {
   display: flex;
@@ -650,9 +722,8 @@ body {
 }
 
 .center-image img {
-  width: 220px;
-  height: auto;
-  display: block;
+  width: 360px;
+
 }
 
 .card {
@@ -666,6 +737,8 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+  height: auto;
+  padding-bottom: 20px;
 }
 
 .card:hover {
@@ -679,193 +752,147 @@ body {
 
 .card h3 {
   margin: 0;
-  font-size: 16px;
+  font-size: 25px;
 }
 
 .card p {
   margin: 5px 0 0;
-  font-size: 14px;
+  font-size: 20px;
   color: #555;
 }
 
 
 
-.pic img {
-  width: 300px;
-  margin-right: 200px;
-
+.solve img{
+  width: 430px;
 }
 
 
 
-.faisla {
-  display: flex;
-  justify-content: center;
+
+.satarve p{
+  font-size: 20px;
+  width: 90%;
 }
 
-
-
-.health h4 {
+.satarve h3{
   color: blue;
-}
-
-.health {
   position: relative;
-  right: 140px;
+  top: 25px;
 }
 
-.health p {
-  width: 400px;
-  font-size: 16px;
-  line-height: 1.5;
-  overflow-wrap: break-word;
+.satarve h1{
+  font-size: 50px;
+  width: 80%;
 }
 
-.health button {
-  background-color: #0072ff;
+.satarve button{
+
+  background-color: blue;
+  width: 200px;
   color: white;
+  border: none;
+  font-size: 20px;
   height: 40px;
-  width: 80px;
-  border: none;
-  border-radius: 4px;
-}
-
-.doctor {
-  text-align: center;
-  color: blue;
-}
-
-
-.howard img {
-  width: 200px;
-}
-
-.howard {
-  border: 3px solid black;
-  width: 200px;
-
-}
-
-.howard h4 {
-  color: blue;
-}
-
-.thomson img {
-  width: 200px;
-
-}
-
-
-.thomson {
-  border: 3px solid black;
-  width: 200px;
-
-}
-
-.thomson h4 {
-  color: blue;
-}
-
-.cooper img {
-  width: 200px;
-
-
-}
-
-.cooper {
-  border: 3px solid black;
-  width: 200px;
-}
-
-.cooper h4 {
-  color: blue;
-}
-
-.bryant img {
-  width: 200px;
-}
-
-.bryant {
-  border: 3px solid black;
-  width: 200px;
-
-}
-
-.bryant h4 {
-  color: blue;
-}
-
-
-.hev {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  text-align: center;
-}
-
-.appointment-section {
-  background-color: #002b5e;
-  padding: 50px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 140px;
-  height: 300px;
-}
-
-.appointment-container {
-  display: flex;
-  max-width: 1200px;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 40px;
-}
-
-.doctor-image img {
-  max-width: 400px;
   border-radius: 10px;
-  padding-bottom: 160px;
-
-}
-
-.appointment-content {
-  color: #fff;
-  max-width: 500px;
-
-}
-
-.subheading {
-  color: #66ccff;
-  font-weight: bold;
-}
-
-.appointment-content h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
-  line-height: 1.3;
-}
-
-.appointment-btn {
-  background: linear-gradient(to right, #00c6ff, #0072ff);
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  height: 50px;
-}
-
-.appointment-btn:hover {
-  background: linear-gradient(to right, #0072ff, #00c6ff);
 }
 
 
-.ogl h4 {
+.satarve button:hover{
+  background-color: lightblue;
+  color: black;
+}
+
+
+.atharve{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 85%;
+  gap: 100px;
+  margin: auto;
+  
+}
+
+
+.our img{
+  width: 160px;
+}
+
+.our{
+  border: 2px solid black;
+  width: 200px;
+  text-align: center;
+  padding-top: 20px;
+ 
+}
+
+.our p{
   color: blue;
+}
 
+
+.hop{
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  margin-top: 80px;
+}
+
+.den{
+  text-align: center;
+}
+
+
+.back{
+  background-color: #00264D ;
+  margin-top: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  height: 467px;
+
+  
+
+}
+
+.mmm img{
+  width: 560px;
+  padding-left: 100px;
+  position: relative;
+  bottom: 50px;
+
+
+
+}
+
+
+.book h3{
+  font-size: 25px;
+  color: white;
+}
+
+.book h1{
+  font-size: 60px;
+  width: 89%;
+  color: white;
+}
+
+.book button{
+
+  background-color: blue;
+  color: white;
+  border: none;
+  width: 200px;
+  height: 40px;
+  font-size: 18px;
+}
+
+.book button:hover{
+
+  background-color: lightblue;
+  color: black;
 }
 
 
@@ -875,7 +902,7 @@ body {
 
 .nulla {
   border: 3px solid black;
-  width: 300px;
+  width: 350px;
   overflow: hidden
 }
 
@@ -895,7 +922,7 @@ body {
 
 
 .nulla img {
-  width: 300px;
+  width: 350px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
 
@@ -909,7 +936,7 @@ body {
 
 .dras {
   border: 3px solid black;
-  width: 300px;
+  width: 350px;
   overflow: hidden;
 
 }
@@ -930,7 +957,7 @@ body {
 
 
 .dras img {
-  width: 300px;
+  width: 350px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
 }
@@ -943,7 +970,7 @@ body {
 
 .seas {
   border: 3px solid black;
-  width: 300px;
+  width: 350px;
   overflow: hidden;
 
 }
@@ -964,7 +991,7 @@ body {
 
 
 .seas img {
-  width: 300px;
+  width: 350px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
 }
@@ -984,12 +1011,13 @@ body {
 
 
 
+
 .oha {
   display: flex;
   justify-content: center;
   background-color: black;
   color: white;
-  gap: 60px;
+  gap: 100px;
   margin-top: 40px;
   padding-top: 50px;
 }
@@ -1005,280 +1033,832 @@ body {
 
 
 
-#scrollBtn {
-  position: fixed;
-  bottom: 40px;
-  right: 40px;
-  z-index: 99;
-  font-size: 30px;
-  border: none;
-  outline: none;
-  background: #0ff;
-  color: #000;
-  cursor: pointer;
-  padding: 12px 16px;
-  border-radius: 50%;
-  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
-  display: none;
-  transition: all 0.3s ease;
-  height: 50px;
-}
-
-#scrollBtn:hover {
-  background: #0cf;
-  box-shadow: 0 0 15px #0cf, 0 0 30px #0cf;
-}
 
 
 
 
 
 
-@media (max-width: 600px) {
-  .nav {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 15px 20px;
-  }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 500px) {
   .hamburger {
     display: block;
-    font-size: 28px;
-    cursor: pointer;
-    position: absolute;
-    right: 25px;
-    z-index: 1001;
+    color: white;
+    background-color: blue;
+    width: 35px;
+    padding-left: 10px;
+    border: 2px solid black;
   }
 
-  .nav-links {
+  .navlink {
     flex-direction: column;
-    position: absolute;
-    top: 70px;
-    right: 0;
-    background-color: #fff;
-    width: 100%;
-    display: none;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
     gap: 20px;
-    padding: 20px 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    background-color: black;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    padding-top: 30px;
+    height: auto;
+    padding-bottom: 20px;
+    width: 100%;
   }
 
-  .nav-links.open {
-    display: flex;
+  .link {
+    color: white;
+    font-size: 25px;
   }
 
-  .top-bar {
+  .navlink.open {
+    transform: translateX(-50%);
+  }
+
+  .nav h1 {
+    font-size: 30px;
+    position: relative;
+    right: 40px;
+  }
+
+  .close {
+    display: block;
+    font-size: 28px;
+    color: white;
+
+  }
+
+  .pehla {
     display: none;
   }
 
-  .nav button {
-    width: 100%;
-    height: 45px;
+  .athva {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 150px;
+    margin-right: 40px;
+  }
+
+  .chata h1 {
+    font-size: 30px;
+    text-align: center;
+
+  }
+
+  .chata p {
+    font-size: 17px;
+    width: 90%;
+    text-align: left;
+    margin: auto;
+    padding-top: 20px;
+  }
+
+  .satva img {
+    width: 300px;
+    display: block;
+  margin: 0 auto;     
+
+  }
+
+  .nova {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chata input {
+    width: 280px;
+    margin-top: 30px;
+    border: 3px solid black;
+    margin-right: 20px;
+
+  }
+
+  .chata button {
+    width: 290px;
+    margin-top: 10px;
+    margin-right: 20px;
+  }
+
+  .chata h3 {
+    width: 90%;
+    text-align: center;
+    font-size: 17px;
+
+  }
+
+  .services{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card{
+    width: 260px;
+    height: auto;
+    padding-bottom: 20px;
+  }
+
+  .card h3{
+    font-size: 20px;
+  }
+
+  .card p{
     font-size: 16px;
   }
 
-  .best h1
-   {
-    width: 100%;
+  .center-image{
+    display: none;
+  }
+
+  .daswa h1{
     font-size: 30px;
+  }
+
+  .daswa h2{
+    font-size: 28px;
+  }
+
+  .atharve{
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
     text-align: center;
+
   }
 
-
-  .health p{
-    font-size: 15px;
-    width: 100%;
-    text-align: left;
-  }
-
-
-  .best p{
-    font-size: 17px;
-    width: 100%;
-    text-align: left;
+  .solve img{
+    width: 300px;
   }
 
  
 
-  .best {
-    right: 0;
-    padding:  10px;
-  text-align: center;
-  margin-right: 40px;
+ .satarve h1{
+  font-size: 30px;
+  width: 90%;
+  margin: auto;
+  margin-top: 50px;
+}
 
-  }
+.satarve p{
+  font-size: 17px;
+  width: 90%;
+  margin: auto;
+    text-align: justify;
+  margin-top: 50px;
 
-  .ppp img,
-  .pic img,
-  .center-image img {
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
-    display: block;
-  }
+}
 
-  .kya {
+.satarve button{
+  margin-top: 50px;
+  
+}
+
+.hop{
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+ .back {
     flex-direction: column;
-    align-items: stretch;
-    right: 0;
-    bottom: 0;
-    width: 90%;
-    max-width: 100%;
-    padding: 20px;
-    height: 100px;
-  }
-
-
-  .kya button {
-    width: 100%;
-  }
-
-
-  .services {
-    flex-direction: column;
-    align-items: center;
-    margin: auto;
-    width: 250px;
-    position: relative;
-    right: 20px;
-    
-    
-    
-  }
-
-  .card {
-    width: 100%;
-    max-width: 300px;
-  }
-
-  .faisla {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .health {
-    right: 0;
-    padding: 0 15px;
-    text-align: center;
-  }
-
-  .hev {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .appointment-section {
-    flex-direction: column;
-    padding: 30px 15px;
     height: auto;
-  }
-
-  .doctor-image img {
-    max-width: 100%;
+    margin-top: 50px;
+    gap: 20px;
     padding-bottom: 20px;
   }
 
-  .appointment-content {
-    max-width: 100%;
+  .mmm img {
+    width: 100%;
+    padding-left: 0;
+    position: static;
+    padding-top: 20px;
+  }
+
+  .book h3 {
+    font-size: 25px;
     text-align: center;
   }
 
-  .cds {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    font-size:15px;
-  }
-
-  .oha {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
+  .book h1 {
+    font-size: 32px;
+    width: 100%;
     text-align: center;
-    padding: 30px 15px;
   }
 
-  #scrollBtn {
-    bottom: 20px;
-    right: 20px;
-    font-size: 24px;
-    padding: 10px 14px;
+  .book button {
+    width: 200px;
+    height: 50px;
+    font-size: 22px;
+    display: block;
+    margin: 10px auto;
   }
 
-  .our {
-    margin-top: 470px;
+
+  .ogl{
+    margin-top: 50px;
   }
 
-  .tnav {
-    flex-direction: column;
-  }
+.ogl h1{
+  font-size: 27px;
+}
 
-  .nulla a{
-    position: relative;
-    bottom: 7px;
-  }
-
-  .dras a{
-  position: relative;
-  bottom: 7px;
-  }
-
-  .seas a{
-    position: relative;
-    bottom: 7px;
-  }
+.ogl h2{
+  font-size: 28px;
   
 }
 
+  .cds{
+    flex-direction: column;
+    align-items: center;
+  }
 
- @media (min-width: 601px) and (max-width:1300px){
+  .nulla{
+    width: 300px;
+  }
 
-  .top-bar{
+  .nulla img{
+    width: 300px;
+  }
+
+  .dras{
+    width: 300px;
+  }
+
+  .dras img{
+    width: 300px;
+  }
+
+  .seas{
+    width: 300px;
+  }
+
+  .seas img{
+    width: 300px;
+  }
+
+
+  .oha{
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .cnt span{
+    font-size: 22px;
+  }
+
+  .sultan h1{
+    font-size: 40px;
+  }
+
+  .sultan p{
+    font-size: 22px;
+  }
+
+  .oha h4{
+    font-size:22px;
+  }
+
+
+  .den h3{
+    font-size: 28px;
+    margin-top: 50px;
+  }
+
+
+
+}
+
+
+
+
+
+@media screen and (min-width: 501px) and (max-width: 580px) {
+
+  .hamburger {
+    display: block;
+    color: white;
+    background-color: blue;
+    width: 35px;
+    padding-left: 10px;
+    border: 2px solid black;
+  }
+
+  .navlink {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: black;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    padding-top: 30px;
+    height: auto;
+    padding-bottom: 20px;
+    width: 100%;
+  }
+
+  .link {
+    color: white;
+    font-size: 25px;
+  }
+
+  .navlink.open {
+    transform: translateX(-50%);
+  }
+
+  .nav h1 {
+    font-size: 30px;
+  }
+
+  .close {
+    display: block;
+    font-size: 28px;
+    color: white;
+
+  }
+
+  .pehla {
     display: none;
   }
 
-  .tnav{
-
-    margin-left: 120px;
-    
+  .athva {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 150px;
   }
 
-  .kya {
-
-    margin-right: 98px;
-    
+  .chata h1 {
+    font-size: 35px;
+    text-align: center;
 
   }
 
-  .ppp img{
-    margin-right: 80px;
+  .chata p {
+    font-size: 17px;
+    width: 90%;
+    text-align: left;
+    margin: auto;
+    padding-top: 20px;
   }
 
-  .center-image img{
-    width: 240px;
+  .satva img {
+    width: 300px;
+    display: block;
+  margin: 0 auto;     
+
   }
 
-  .card{
-    width: 230px;
+  .nova {
+    flex-direction: column;
+    align-items: center;
   }
+
+  .chata input {
+    width: 280px;
+    margin-top: 30px;
+    border: 3px solid black;
+    margin-right: 20px;
+
+  }
+
+  .chata button {
+    width: 290px;
+    margin-top: 10px;
+    margin-right: 20px;
+  }
+
+  .chata h3 {
+    width: 90%;
+    text-align: center;
+    font-size: 25px;
+
+  }
+
+
+  .services{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .center-image{
+    display: none;
+  }
+
+  .daswa h1{
+    font-size: 40px;
+  }
+
+  .daswa h2{
+    font-size: 30px;
+  }
+
+  .atharve{
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+
+  }
+
+  .solve img{
+    width: 300px;
+  }
+
+ 
+
+ .satarve h1{
+  font-size: 30px;
+  width: 90%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.satarve p{
+  font-size: 17px;
+  width: 90%;
+  margin: auto;
+  margin-top: 50px;
+  text-align: justify;
+
+}
+
+.satarve button{
+  margin-top: 50px;
+  
+}
+
+.hop{
+  flex-direction: column;
+  align-items: center;
+}
+
+ .back {
+    flex-direction: column;
+    height: auto;
+    margin-top: 50px;
+    gap: 20px;
+    padding-bottom: 20px;
+  }
+
+  .mmm img {
+    width: 100%;
+    padding-left: 0;
+    position: static;
+    padding-top: 20px;
+  }
+
+  .book h3 {
+    font-size: 25px;
+    text-align: center;
+  }
+
+  .book h1 {
+    font-size: 32px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .book button {
+    width: 200px;
+    height: 50px;
+    font-size: 22px;
+    display: block;
+    margin: 10px auto;
+  }
+
+    .cds{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nulla{
+    width: 300px;
+  }
+
+  .nulla img{
+    width: 300px;
+  }
+
+  .dras{
+    width: 300px;
+  }
+
+  .dras img{
+    width: 300px;
+  }
+
+  .seas{
+    width: 300px;
+  }
+
+  .seas img{
+    width: 300px;
+  }
+
 
   .oha{
-    gap: 40px;
-
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
   }
 
-  .sultan{
-    margin-left: 15px;
+  .cnt span{
+    font-size: 22px;
   }
 
-  .best{
-    position: relative;
-    right: 130px;
+  .sultan h1{
+    font-size: 40px;
   }
+
+  .sultan p{
+    font-size: 22px;
+  }
+
+  .oha h4{
+    font-size:22px;
+  }
+
+
+  .den h3{
+    font-size: 28px;
+    margin-top: 50px;
+  }
+
+
   
+ 
+}
+
+
+
+
+
+
+@media screen and (min-width: 581px) and (max-width: 820px) {
+
+  .hamburger {
+    display: block;
+    color: white;
+    background-color: blue;
+    width: 35px;
+    padding-left: 10px;
+    border: 2px solid black;
+  }
+
+  .navlink {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: black;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    padding-top: 30px;
+    height: auto;
+    padding-bottom: 20px;
+    width: 100%;
+  }
+
+  .link {
+    color: white;
+    font-size: 25px;
+  }
+
+  .navlink.open {
+    transform: translateX(-50%);
+  }
+
+  .nav h1 {
+    font-size: 30px;
+  }
+
+  .close {
+    display: block;
+    font-size: 28px;
+    color: white;
+
+  }
+
+  .pehla {
+    display: none;
+  }
+
+  .athva {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 150px;
+  }
+
+  .chata h1 {
+    font-size: 35px;
+    text-align: center;
+
+  }
+
+  .chata p {
+    font-size: 17px;
+    width: 90%;
+    text-align: left;
+    margin: auto;
+    padding-top: 20px;
+  }
+
+  .satva img {
+    width: 300px;
+    display: block;
+  margin: 0 auto;     
+
+  }
+
+  .nova {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chata input {
+    width: 280px;
+    margin-top: 30px;
+    border: 3px solid black;
+    margin-right: 20px;
+
+  }
+
+  .chata button {
+    width: 290px;
+    margin-top: 10px;
+    margin-right: 20px;
+  }
+
+  .chata h3 {
+    width: 90%;
+    text-align: center;
+    font-size: 25px;
+
+  }
+
+
+  .services{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .center-image{
+    display: none;
+  }
+
+  .daswa h1{
+    font-size: 40px;
+  }
+
+  .daswa h2{
+    font-size: 30px;
+  }
+
+
+
+  .atharve{
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+
+  }
+
+  .solve img{
+    width: 300px;
+  }
+
+ 
+
+ .satarve h1{
+  font-size: 30px;
+  width: 90%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.satarve p{
+  font-size: 17px;
+  width: 90%;
+  margin: auto;
+  margin-top: 50px;
+  text-align: justify;
+
+}
+
+.satarve button{
+  margin-top: 50px;
+  
+}
+
+
+.hop{
+  flex-direction: column;
+  align-items: center;
+}
+
+
+ .back {
+    flex-direction: column;
+    height: auto;
+    margin-top: 50px;
+    gap: 20px;
+    padding-bottom: 20px;
+  }
+
+  .mmm img {
+    width: 100%;
+    padding-left: 0;
+    position: static;
+    padding-top: 20px;
+  }
+
+  .book h3 {
+    font-size: 25px;
+    text-align: center;
+  }
+
+  .book h1 {
+    font-size: 32px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .book button {
+    width: 200px;
+    height: 50px;
+    font-size: 22px;
+    display: block;
+    margin: 10px auto;
+  }
+
+    .cds{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nulla{
+    width: 300px;
+  }
+
+  .nulla img{
+    width: 300px;
+  }
+
+  .dras{
+    width: 300px;
+  }
+
+  .dras img{
+    width: 300px;
+  }
+
+  .seas{
+    width: 300px;
+  }
+
+  .seas img{
+    width: 300px;
+  }
+
+
+  .oha{
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .cnt span{
+    font-size: 22px;
+  }
+
+ 
 }
 
 
@@ -1287,12 +1867,500 @@ body {
 
 
 
+@media screen and (min-width: 821px) and (max-width: 920px) {
+
+  .hamburger {
+    display: block;
+    color: white;
+    background-color: blue;
+    width: 35px;
+    padding-left: 10px;
+    border: 2px solid black;
+  }
+
+  .navlink {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: black;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    padding-top: 30px;
+    height: auto;
+    padding-bottom: 20px;
+    width: 100%;
+  }
+
+  .link {
+    color: white;
+    font-size: 25px;
+  }
+
+  .navlink.open {
+    transform: translateX(-50%);
+  }
+
+  .nav h1 {
+    font-size: 30px;
+  }
+
+  .close {
+    display: block;
+    font-size: 28px;
+    color: white;
+
+  }
+
+  .pehla {
+    display: none;
+  }
+
+  .athva {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 150px;
+  }
+
+  .chata h1 {
+    font-size: 35px;
+    text-align: center;
+
+  }
+
+  .chata p {
+    font-size: 17px;
+    width: 90%;
+    text-align: left;
+    margin: auto;
+    padding-top: 20px;
+  }
+
+  .satva img {
+    width: 300px;
+    display: block;
+  margin: 0 auto;     
+
+  }
+
+  .nova {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chata input {
+    width: 280px;
+    margin-top: 30px;
+    border: 3px solid black;
+    margin-right: 20px;
+
+  }
+
+  .chata button {
+    width: 290px;
+    margin-top: 10px;
+    margin-right: 20px;
+  }
+
+  .chata h3 {
+    width: 90%;
+    text-align: center;
+    font-size: 25px;
+
+  }
+
+
+  .services{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .center-image{
+    display: none;
+  }
+
+  .daswa h1{
+    font-size: 40px;
+  }
+
+  .daswa h2{
+    font-size: 30px;
+  }
+
+
+  .atharve{
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+
+  }
+
+  .solve img{
+    width: 300px;
+  }
+
+ 
+
+ .satarve h1{
+  font-size: 30px;
+  width: 90%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.satarve p{
+  font-size: 17px;
+  width: 90%;
+  margin: auto;
+  margin-top: 50px;
+  text-align: justify;
+
+}
+
+.satarve button{
+  margin-top: 50px;
+  
+}
+
+
+.hop{
+  flex-direction: column;
+  align-items: center;
+}
+
+
+ .back {
+    flex-direction: column;
+    height: auto;
+    margin-top: 50px;
+    gap: 20px;
+    padding-bottom: 20px;
+  }
+
+  .mmm img {
+    width: 100%;
+    padding-left: 0;
+    position: static;
+    padding-top: 20px;
+  }
+
+  .book h3 {
+    font-size: 25px;
+    text-align: center;
+  }
+
+  .book h1 {
+    font-size: 32px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .book button {
+    width: 200px;
+    height: 50px;
+    font-size: 22px;
+    display: block;
+    margin: 10px auto;
+  }
+
+
+    .cds{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nulla{
+    width: 300px;
+  }
+
+  .nulla img{
+    width: 300px;
+  }
+
+  .dras{
+    width: 300px;
+  }
+
+  .dras img{
+    width: 300px;
+  }
+
+  .seas{
+    width: 300px;
+  }
+
+  .seas img{
+    width: 300px;
+  }
+
+
+  .oha{
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .cnt span{
+    font-size: 22px;
+  }
+ 
+}
 
 
 
 
 
 
+
+@media screen and (min-width: 921px) and (max-width: 1030px) {
+
+  .hamburger {
+    display: block;
+    color: white;
+    background-color: blue;
+    width: 35px;
+    padding-left: 10px;
+    border: 2px solid black;
+  }
+
+  .navlink {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: black;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    padding-top: 30px;
+    height: auto;
+    padding-bottom: 20px;
+    width: 100%;
+  }
+
+  .link {
+    color: white;
+    font-size: 25px;
+  }
+
+  .navlink.open {
+    transform: translateX(-50%);
+  }
+
+  .nav h1 {
+    font-size: 30px;
+  }
+
+  .close {
+    display: block;
+    font-size: 28px;
+    color: white;
+
+  }
+
+  .pehla {
+    display: none;
+  }
+
+  .athva {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 150px;
+  }
+
+  .chata h1 {
+    font-size: 35px;
+    text-align: center;
+
+  }
+
+  .chata p {
+    font-size: 17px;
+    width: 90%;
+    text-align: left;
+    margin: auto;
+    padding-top: 20px;
+  }
+
+  .satva img {
+    width: 300px;
+    display: block;
+  margin: 0 auto;     
+
+  }
+
+  .nova {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chata input {
+    width: 280px;
+    margin-top: 30px;
+    border: 3px solid black;
+    margin-right: 20px;
+
+  }
+
+  .chata button {
+    width: 290px;
+    margin-top: 10px;
+    margin-right: 20px;
+  }
+
+  .chata h3 {
+    width: 90%;
+    text-align: center;
+    font-size: 25px;
+
+  }
+
+
+  .services{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .center-image{
+    display: none;
+  }
+
+  .daswa h1{
+    font-size: 40px;
+  }
+
+  .daswa h2{
+    font-size: 30px;
+  }
+
+
+  .atharve{
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+
+  }
+
+  .solve img{
+    width: 300px;
+  }
+
+ 
+
+ .satarve h1{
+  font-size: 30px;
+  width: 90%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.satarve p{
+  font-size: 17px;
+  width: 90%;
+  margin: auto;
+  margin-top: 50px;
+  text-align: justify;
+
+}
+
+.satarve button{
+  margin-top: 50px;
+  
+}
+
+
+.hop{
+  flex-direction: column;
+  align-items: center;
+}
+
+
+ .back {
+    flex-direction: column;
+    height: auto;
+    margin-top: 50px;
+    gap: 20px;
+    padding-bottom: 20px;
+  }
+
+  .mmm img {
+    width: 100%;
+    padding-left: 0;
+    position: static;
+    padding-top: 20px;
+  }
+
+  .book h3 {
+    font-size: 25px;
+    text-align: center;
+  }
+
+  .book h1 {
+    font-size: 32px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .book button {
+    width: 200px;
+    height: 50px;
+    font-size: 22px;
+    display: block;
+    margin: 10px auto;
+  }
+
+
+    .cds{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nulla{
+    width: 300px;
+  }
+
+  .nulla img{
+    width: 300px;
+  }
+
+  .dras{
+    width: 300px;
+  }
+
+  .dras img{
+    width: 300px;
+  }
+
+  .seas{
+    width: 300px;
+  }
+
+  .seas img{
+    width: 300px;
+  }
+
+
+  .oha{
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .cnt span{
+    font-size: 22px;
+  }
+
+ 
+}
 
 
 
